@@ -6,7 +6,7 @@ season. Data is captured as periodic JSON snapshots committed to this repo by a
 scheduled GitHub Action, so the live site is a plain static build with **no
 backend, no database and no API keys**.
 
-**Live site:** https://daniel-beachy.github.io/nfl-season-tracker-2026/
+**Live site:** https://daniel-beachy.github.io/nfl-season-tracker-v2/
 
 ---
 
@@ -165,7 +165,7 @@ patterns.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5180/nfl-season-tracker-2026/
+npm run dev        # http://localhost:5180/nfl-season-tracker-v2/
 npm run build      # static output in dist/
 npm run preview
 ```
@@ -181,7 +181,7 @@ npm run validate             # check every invariant
 ```
 
 `BASE_PATH` controls the Vite base path and defaults to
-`/nfl-season-tracker-2026/`; the deploy workflow sets it from the repository
+`/nfl-season-tracker-v2/`; the deploy workflow sets it from the repository
 name, so a fork deploys correctly without any edits.
 
 ---

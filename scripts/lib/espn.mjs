@@ -7,7 +7,7 @@
  */
 
 const UA =
-  'Mozilla/5.0 (compatible; nfl-season-tracker/1.0; +https://github.com/daniel-beachy/nfl-season-tracker-2026)';
+  'Mozilla/5.0 (compatible; nfl-season-tracker/1.0; +https://github.com/daniel-beachy/nfl-season-tracker-v2)';
 
 export const ENDPOINTS = {
   powerIndex: 'https://site.web.api.espn.com/apis/fitt/v3/sports/football/nfl/powerindex',

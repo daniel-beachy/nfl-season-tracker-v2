@@ -171,7 +171,7 @@ export default function App() {
             {'Not affiliated with the NFL or ESPN \u00b7 '}
             <a href="https://daniel-beachy.github.io">Portfolio</a>
             {' \u00b7 '}
-            <a href="https://github.com/daniel-beachy/nfl-season-tracker-2026" target="_blank" rel="noreferrer">
+            <a href="https://github.com/daniel-beachy/nfl-season-tracker-v2" target="_blank" rel="noreferrer">
               Source
             </a>
           </span>
