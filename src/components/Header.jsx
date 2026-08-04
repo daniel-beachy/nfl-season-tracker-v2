@@ -22,6 +22,13 @@ const MoonIcon = () => (
   </svg>
 );
 
+const HomeIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 10.2 12 3.4l9 6.8V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z" />
+  </svg>
+);
+
 const seasonOptionLabel = (s, compact) => {
   if (!s.mocked) return s.label;
   return compact ? `${s.label} (mocked)` : `${s.label} — mocked, not fully accurate`;
@@ -42,6 +49,15 @@ export default function Header({ seasons, season, onSeasonChange, tab, onTabChan
           </div>
 
           <div className="header__actions">
+            <a
+              className="btn btn--icon"
+              href="https://daniel-beachy.github.io"
+              aria-label="Back to daniel-beachy.github.io"
+              title="Back to portfolio"
+            >
+              <HomeIcon />
+            </a>
+
             <label className="sr-only" htmlFor="season-select">Season</label>
             <span className="select-wrap">
               <select
