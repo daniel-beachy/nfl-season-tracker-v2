@@ -1,0 +1,59 @@
+name: Capture snapshot
+
+# Snapshots are taken when the numbers are most likely to be stable:
+#   - Wednesday 14:00 UTC (09:00 ET) during the season, after every game of the
+#     previous week has been played and before that week's Thursday kickoff.
+#   - The 1st of each month for the offseason / preseason, where ESPN only
+#     refreshes its projections occasionally.
+# The capture script decides the cadence itself, so an extra run inside the same
+# period simply overwrites that period's snapshot instead of duplicating it.
+on:
+  schedule:
+    - cron: '0 14 * * 3'
+    - cron: '0 14 1 * *'
+  workflow_dispatch:
+    inputs:
+      season:
+        description: 'Season year to capture (blank = active season)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Capture snapshot
+        run: |
+          if [ -n "${{ inputs.season }}" ]; then
+            node scripts/capture.mjs --season "${{ inputs.season }}"
+          else
+            node scripts/capture.mjs
+          fi
+
+      - name: Validate data
+        run: node scripts/validate-data.mjs
+
+      - name: Commit snapshot
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data
+          if git diff --staged --quiet; then
+            echo 'No data changes to commit.'
+          else
+            git commit -m "data: snapshot $(date -u +'%Y-%m-%d')"
+            git push
+          fi

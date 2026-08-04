@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="NFL Season Tracker — how every team's playoff and championship outlook, plus the league's statistical leaders, evolve across the season." />
+    <meta name="color-scheme" content="dark light" />
+    <title>NFL Season Tracker</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b6e4f'/%3E%3Cellipse cx='16' cy='16' rx='10' ry='6.4' fill='%238a5230'/%3E%3Cpath d='M8 16h16M13 13v6M16 12.4v7.2M19 13v6' stroke='%23fff' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <script>
+      // Apply persisted theme before first paint to avoid a flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem('nst:theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

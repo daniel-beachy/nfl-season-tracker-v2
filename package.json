@@ -1,0 +1,25 @@
+{
+  "name": "nfl-season-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Static NFL season tracker: playoff/championship projections and statistical leaders over time.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "capture": "node scripts/capture.mjs",
+    "capture:teams": "node scripts/capture.mjs --teams-only",
+    "backfill": "node scripts/backfill-2025.mjs",
+    "validate": "node scripts/validate-data.mjs"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7"
+  }
+}
